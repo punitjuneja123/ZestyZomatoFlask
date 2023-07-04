@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zesty Zomato - Update Order</title>
+</head>
+<body>
+    <h1>Update Order</h1>
+    <form action="/orders/update/{{ order_id }}" method="POST">
+        <label for="status">Update Status:</label>
+        <select name="status">
+            <option value="received" {% if order.status == 'received' %}selected{% endif %}>Received</option>
+            <option value="preparing" {% if order.status == 'preparing' %}selected{% endif %}>Preparing</option>
+            <option value="ready for pickup" {% if order.status == 'ready for pickup' %}selected{% endif %}>Ready for Pickup</option>
+            <option value="delivered" {% if order.status == 'delivered' %}selected{% endif %}>Delivered</option>
+        </select>
+        <br>
+        <button type="submit">Update</button>
+    </form>
+    <br>
+    <a href="/orders">Back to Orders</a>
+</body>
+</html>

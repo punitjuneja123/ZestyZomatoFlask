@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zesty Zomato - Menu</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/menu">Menu</a></li>
+        <li><a href="/orders">Orders</a></li>
+      </ul>
+    </nav>
+    <h1>Menu</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Availability</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for dish in menu %}
+        <tr>
+          <td>{{ dish['id'] }}</td>
+          <td>{{ dish['name'] }}</td>
+          <td>{{ dish['price'] }}</td>
+          <td>
+            {{ 'Available' if dish['availability'] else 'Not Available' }}
+          </td>
+          <td>
+            <a href="/menu/edit/{{ dish['id'] }}">Edit</a>
+            <a href="/menu/delete/{{ dish['id'] }}">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="add-dish-button">
+      <a href="{{ url_for('add_dish') }}">Add New Dish</a>
+    </div>
+  </body>
+</html>

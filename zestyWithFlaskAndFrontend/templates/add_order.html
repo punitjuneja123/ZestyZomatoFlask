@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zesty Zomato - Add Order</title>
+</head>
+<body>
+    <h1>Add Order</h1>
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+    <form action="/orders/add" method="POST">
+        <label for="customer_name">Customer Name:</label>
+        <input type="text" name="customer_name" required>
+        <br>
+        <label for="dish_ids">Dish IDs (comma-separated):</label>
+        <input type="text" name="dish_ids" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <a href="/orders">Back to Orders</a>
+</body>
+</html>
