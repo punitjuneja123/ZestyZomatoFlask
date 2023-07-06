@@ -1,0 +1,45 @@
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static', filename='styles.css') }}"
+/>
+<form action="/orders/place" method="POST">
+  <label for="customer_name">Customer Name:</label>
+  <input type="text" id="customer_name" name="customer_name" required /><br />
+
+  <table>
+    <thead>
+      <tr>
+        <th>Dish Name</th>
+        <th>Price</th>
+        <th>Available</th>
+        <th>Select</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for dish in menu %}
+      <tr>
+        <td>{{ dish.dish_name }}</td>
+        <td>{{ dish.price }}</td>
+        <td>{{ dish.availability }}</td>
+        <td>
+          <input
+            type="checkbox"
+            id="dish_{{ dish._id }}"
+            name="selected_dishes"
+            value="{{ dish._id }}"
+            {%
+            if
+            not
+            dish.availability
+            %}disabled{%
+            endif
+            %}
+          />
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <input type="submit" value="Place Order" />
+</form>

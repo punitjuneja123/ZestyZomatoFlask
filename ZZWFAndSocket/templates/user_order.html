@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>User Order</title>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+   <h1>User Order</h1>
+   <h2>Order Details</h2>
+   <p><strong>Customer Name:</strong> {{ order.customer_name }}</p>
+   <p><strong>Dishes:</strong></p>
+   <ul>
+       {% for dish_name in dish_names %}
+           <li>{{ dish_name }}</li>
+       {% endfor %}
+   </ul>
+   <p><strong>Total Price:</strong> {{ total_price }}</p>
+   <p><strong>Status:</strong> {{ order.status }}</p>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
+   <script>
+       const socket = io();
+       
+
+       // Receive real-time updates for order status
+       socket.on('order_status_update', function(updatedOrder) {
+           // Update the order status on the page
+           document.getElementById('order_status').innerText = updatedOrder.status;
+       });
+   </script>
+</body>
+</html>

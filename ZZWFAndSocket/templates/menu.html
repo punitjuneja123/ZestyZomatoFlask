@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zesty Zomato Menu</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Zesty Zomato Menu</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Dish Name</th>
+          <th>Price</th>
+          <th>Availability</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for dish in menu %}
+        <tr>
+          <td>{{ dish.dish_name }}</td>
+          <td>{{ dish.price }}</td>
+          <td>{{ dish.availability }}</td>
+          <td>
+            <a href="/menu/edit/{{ dish._id }}">Edit</a>
+            <a href="/menu/delete/{{ dish._id }}">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="{{ url_for('add_dish') }}" class="add-button">Add Dish</a>
+  </body>
+</html>

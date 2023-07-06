@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zesty Zomato - Add Dish</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Add Dish</h1>
+
+    <form action="/menu/add" method="POST">
+      <label for="dish_name">Dish Name:</label>
+      <input type="text" id="dish_name" name="dish_name" required /><br />
+
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" required /><br />
+
+      <label for="availability">Availability:</label>
+      <input type="checkbox" id="availability" name="availability" /><br />
+
+      <input type="submit" value="Add Dish" />
+    </form>
+  </body>
+</html>
