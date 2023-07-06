@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify, render_template, redirect, url_for
 from flask_pymongo import pymongo
 from bson.errors import InvalidId
 from flask_socketio import SocketIO, emit
-CONNECTION_STRING = "mongodb+srv://punit:punit@cluster0.hpn8i.mongodb.net/?retryWrites=true&w=majority"
+CONNECTION_STRING = "url"
 client = pymongo.MongoClient(CONNECTION_STRING)
 db = client.get_database('zestyZomato')
 menu_collection = pymongo.collection.Collection(db, 'menu')
